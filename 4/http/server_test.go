@@ -10,7 +10,7 @@ import (
 	"testing"
 )
 
-type TestCase struct {
+type TestCase1 struct {
 	ID      string
 	Result  *CheckoutResult
 	IsError bool
@@ -68,8 +68,8 @@ func (c *Cart) Checkout(id string) (*CheckoutResult, error) {
 }
 
 func TestCartCheckout(t *testing.T) {
-	cases := []TestCase{
-		TestCase{
+	cases := []TestCase1{
+		{
 			ID: "42",
 			Result: &CheckoutResult{
 				Status:  200,
@@ -78,7 +78,7 @@ func TestCartCheckout(t *testing.T) {
 			},
 			IsError: false,
 		},
-		TestCase{
+		{
 			ID: "100500",
 			Result: &CheckoutResult{
 				Status:  400,
@@ -87,12 +87,12 @@ func TestCartCheckout(t *testing.T) {
 			},
 			IsError: false,
 		},
-		TestCase{
+		{
 			ID:      "__broken_json",
 			Result:  nil,
 			IsError: true,
 		},
-		TestCase{
+		{
 			ID:      "__internal_error",
 			Result:  nil,
 			IsError: true,

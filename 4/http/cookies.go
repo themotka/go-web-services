@@ -6,7 +6,7 @@ import (
 	"time"
 )
 
-func mainPage(w http.ResponseWriter, r *http.Request) {
+func mainPage1(w http.ResponseWriter, r *http.Request) {
 	session, err := r.Cookie("session_id")
 	loggedIn := (err != http.ErrNoCookie)
 
@@ -46,7 +46,7 @@ func logoutPage(w http.ResponseWriter, r *http.Request) {
 func main() {
 	http.HandleFunc("/login", loginPage)
 	http.HandleFunc("/logout", logoutPage)
-	http.HandleFunc("/", mainPage)
+	http.HandleFunc("/", mainPage1)
 
 	fmt.Println("starting server at :8080")
 	http.ListenAndServe(":8080", nil)
